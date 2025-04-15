@@ -9,8 +9,14 @@ pub struct Args {
 
 #[derive(Parser, Copy, Clone, ValueEnum, strum::Display)]
 pub enum Variant {
+    /// Make sample accounts
+    MakeAccounts,
+    /// Check balances for accounts in config
     Balances,
+    /// Cross send between accounts in config
     CrossSend,
+    /// Follow block creation and transfer sols
     FollowGeyser,
+    /// Test wallet program
     WalletTest,
 }

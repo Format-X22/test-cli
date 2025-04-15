@@ -3,7 +3,7 @@ use clap::{Parser, ValueEnum};
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 pub struct Args {
-    #[arg(short, long)]
+    #[arg(short, long, value_name = "VARIANT")]
     pub run: Variant,
 }
 

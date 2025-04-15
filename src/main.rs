@@ -17,7 +17,7 @@ async fn main() -> anyhow::Result<(), anyhow::Error> {
     logs_builder.target(Target::Stdout);
     logs_builder.init();
 
-    info!("Run in mode - {}", args.run);
+    info!("Run in '{}' variant", args.run);
 
     match args.run {
         Variant::Balances => Ok(()),

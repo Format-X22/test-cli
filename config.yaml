@@ -1,6 +1,7 @@
 balances:
-  - test_1
-  - test_2
+  - CDDT7HvMb2Y34gPJ2XvXdvj5VAirpBaqbENjnnx2Qazg
+  - B3LfEJZSZHTuVzeyHBEyv2nYvvKLt2VGzYEyMjDJ7QD1
+  - 6tnNqsutfN7cYiDEuCQiq8qSazzxzVccqstmtW16wDze
 send_from:
   - test_1
   - test_2

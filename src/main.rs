@@ -1,13 +1,14 @@
 use crate::args::{Args, Variant};
+use crate::balances::Balances;
 use crate::config::Config;
 use crate::make_accounts::MakeAccounts;
+use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 use anchor_client::solana_sdk::commitment_config::CommitmentConfig;
 use anyhow::{Error, Ok, Result};
 use clap::Parser;
 use env_logger::{Builder, Target};
 use log::{LevelFilter, info};
 use std::fs;
-use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 
 mod args;
 mod balances;
@@ -42,7 +43,11 @@ async fn main() -> Result<(), Error> {
 
             maker.make_sample().await
         }
-        Variant::Balances => Ok(()),
+        Variant::Balances => {
+            let balances = Balances::new(connection);
+
+            balances.display_balances(config.balances).await
+        }
         Variant::CrossSend => Ok(()),
         Variant::FollowGeyser => Ok(()),
         Variant::WalletTest => Ok(()),

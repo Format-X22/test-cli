@@ -14,4 +14,4 @@ serde_yaml = "0.9"
 serde = { version = "1.0.219", features = ["derive"] }
 anchor-lang = "0.31.0"
 anchor-client = { version = "0.31.0", features = ["async"] }
-hexhex = "1.1.1"
+bs58 = {version = "0.5.1"}

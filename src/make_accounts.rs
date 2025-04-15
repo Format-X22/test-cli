@@ -4,7 +4,7 @@ use anchor_client::solana_sdk::signature::Signature;
 use anchor_client::solana_sdk::{signature::Keypair, signer::Signer};
 use anchor_lang::prelude::*;
 use anyhow::Result;
-use hexhex::hex;
+use bs58::encode;
 use log::info;
 use std::time::Duration;
 use tokio::time::sleep;
@@ -27,7 +27,10 @@ impl MakeAccounts {
             let acc = Keypair::new();
 
             info!("Acc {i} KEY = {}", acc.pubkey());
-            info!("Acc {i} SEC = {}", hex(acc.secret().to_bytes()));
+            info!(
+                "Acc {i} SEC = {}",
+                encode(acc.secret().to_bytes()).into_string()
+            );
 
             accounts.push(acc);
         }

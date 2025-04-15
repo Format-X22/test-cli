@@ -1,0 +1,12 @@
+balances:
+  - test_1
+  - test_2
+send_from:
+  - test_1
+  - test_2
+send_to:
+  - test_1
+  - test_2
+on_block_from: test
+on_block_to: test
+wallet_program: test

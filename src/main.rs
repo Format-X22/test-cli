@@ -69,7 +69,13 @@ async fn main() -> Result<(), Error> {
             sender.send(from, to).await
         }
         Variant::FollowGeyser => {
-            let follower = FollowGeyser::new(config.geyser_endpoint, config.geyser_key);
+            let follower = FollowGeyser::new(
+                local_connection,
+                config.geyser_endpoint,
+                config.geyser_key,
+                config.on_block_from,
+                config.on_block_to,
+            );
 
             follower.follow().await
         }

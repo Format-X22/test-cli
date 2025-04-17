@@ -1,6 +1,5 @@
 use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 use anchor_client::solana_sdk::pubkey::Pubkey;
-use anchor_client::solana_sdk::signature::{Keypair, Signer};
 use anyhow::Result;
 use log::info;
 

@@ -1,10 +1,7 @@
 use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 use anchor_client::solana_sdk::native_token::LAMPORTS_PER_SOL;
-use anchor_client::solana_sdk::signature::Signature;
 use anchor_client::solana_sdk::{signature::Keypair, signer::Signer};
-use anchor_lang::prelude::*;
 use anyhow::Result;
-use bs58::encode;
 use log::info;
 use std::time::Duration;
 use tokio::time::sleep;
@@ -27,10 +24,7 @@ impl MakeAccounts {
             let acc = Keypair::new();
 
             info!("Acc {i} KEY = {}", acc.pubkey());
-            info!(
-                "Acc {i} SEC = {}",
-                encode(acc.secret().to_bytes()).into_string()
-            );
+            info!("Acc {i} SEC = {}", acc.to_base58_string());
 
             accounts.push(acc);
         }

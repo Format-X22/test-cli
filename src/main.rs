@@ -1,10 +1,11 @@
 use crate::args::{Args, Variant};
 use crate::balances::Balances;
 use crate::config::Config;
+use crate::cross_send::CrossSend;
 use crate::make_accounts::MakeAccounts;
 use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 use anchor_client::solana_sdk::commitment_config::CommitmentConfig;
-use anyhow::{Error, Ok, Result};
+use anyhow::{Error, Ok, Result, bail};
 use clap::Parser;
 use env_logger::{Builder, Target};
 use log::{LevelFilter, info};
@@ -35,8 +36,6 @@ async fn main() -> Result<(), Error> {
         CommitmentConfig::confirmed(),
     );
 
-    // TODO -
-
     match args.run {
         Variant::MakeAccounts => {
             let maker = MakeAccounts::new(connection);
@@ -44,11 +43,30 @@ async fn main() -> Result<(), Error> {
             maker.make_sample().await
         }
         Variant::Balances => {
+            if config.balances.len() < 1 {
+                bail!("Empty balances config section!");
+            }
+
             let balances = Balances::new(connection);
 
             balances.display_balances(config.balances).await
         }
-        Variant::CrossSend => Ok(()),
+        Variant::CrossSend => {
+            let from = config.send_from;
+            let to = config.send_to;
+
+            if from.len() < 1 || to.len() < 1 {
+                bail!("Empty cross sent config!")
+            }
+
+            if from.len() != to.len() {
+                bail!("From address count not equal To address count, check config!")
+            }
+
+            let sender = CrossSend::new(connection);
+
+            sender.send(from, to).await
+        }
         Variant::FollowGeyser => Ok(()),
         Variant::WalletTest => Ok(()),
     }

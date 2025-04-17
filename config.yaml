@@ -3,11 +3,16 @@ balances:
   - B3LfEJZSZHTuVzeyHBEyv2nYvvKLt2VGzYEyMjDJ7QD1
   - 6tnNqsutfN7cYiDEuCQiq8qSazzxzVccqstmtW16wDze
 send_from:
-  - test_1
-  - test_2
+  - key: CXFx11wbzAkkLaBjkeQY18XLmBQ9Rix4TP2WTTE52JFx
+    sec: Sy3Gtxkq6KNPknyK3JJWeYbbF3Sf8BLxou48EYfsuL583Kv7NGxQRx4yY9SDUWiaBFgs1mpeHxTn1R7BPFnkiAz
+  - key: DEmaTwV4rLzPXtpQE8gq2Yx8fAsGfJ2CcLmLyKvhnpmr
+    sec: 6jbce6tHHDKPosr6ZPcGsbKLsEzcx8TnbesQGVUQmVHGGqzqU7tafCV61epTCti8zqU9LUq2ZaT7ELnSL81rq4x
+  - key: 3ZXzbtbwZCa77hDJCkjTavwLHFoFxXgM41EREJTvrbEt
+    sec: 2fa8cTg3zQ1YJ2mTiMMhMQDGKbuuVvonmNv7VMapEMcRiaBe1arpPbphPiDj92H943iGkBCvbRy2c6bugMjcxZuN
 send_to:
-  - test_1
-  - test_2
+  - XxvXE6TqC28DoMfadef19e8b3ndeZrHZkyfdsuBKyvB
+  - J77MRZ3i7GwVdr3eKjtnTe4EMYUqpcD4y7yhXBkXDzEG
+  - CDDT7HvMb2Y34gPJ2XvXdvj5VAirpBaqbENjnnx2Qazg
 on_block_from: test
 on_block_to: test
 wallet_program: test

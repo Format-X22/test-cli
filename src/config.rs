@@ -9,7 +9,6 @@ pub struct Config {
     pub geyser_key: String,
     pub on_block_from: CfgKeyPair,
     pub on_block_to: String,
-    pub wallet_program: String,
 }
 
 #[derive(PartialEq, Serialize, Deserialize)]

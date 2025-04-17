@@ -6,7 +6,7 @@ use crate::follow_geyser::FollowGeyser;
 use crate::make_accounts::MakeAccounts;
 use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 use anchor_client::solana_sdk::commitment_config::CommitmentConfig;
-use anyhow::{Error, Ok, Result, bail};
+use anyhow::{Error, Result, bail};
 use clap::Parser;
 use env_logger::{Builder, Target};
 use log::{LevelFilter, info};
@@ -79,6 +79,5 @@ async fn main() -> Result<(), Error> {
 
             follower.follow().await
         }
-        Variant::WalletTest => Ok(()),
     }
 }

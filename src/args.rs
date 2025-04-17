@@ -17,6 +17,4 @@ pub enum Variant {
     CrossSend,
     /// Follow block creation and transfer sols
     FollowGeyser,
-    /// Test wallet program
-    WalletTest,
 }

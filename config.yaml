@@ -13,6 +13,10 @@ send_to:
   - XxvXE6TqC28DoMfadef19e8b3ndeZrHZkyfdsuBKyvB
   - J77MRZ3i7GwVdr3eKjtnTe4EMYUqpcD4y7yhXBkXDzEG
   - CDDT7HvMb2Y34gPJ2XvXdvj5VAirpBaqbENjnnx2Qazg
-on_block_from: test
-on_block_to: test
+geyser_endpoint: https://grpc.ny.shyft.to
+geyser_key: b2b972c6-fff2-4b5c-aac9-375c6984b80e
+on_block_from:
+  key: CXFx11wbzAkkLaBjkeQY18XLmBQ9Rix4TP2WTTE52JFx
+  sec: Sy3Gtxkq6KNPknyK3JJWeYbbF3Sf8BLxou48EYfsuL583Kv7NGxQRx4yY9SDUWiaBFgs1mpeHxTn1R7BPFnkiAz
+on_block_to: DEmaTwV4rLzPXtpQE8gq2Yx8fAsGfJ2CcLmLyKvhnpmr
 wallet_program: test

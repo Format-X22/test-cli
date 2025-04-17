@@ -2,6 +2,7 @@ use crate::args::{Args, Variant};
 use crate::balances::Balances;
 use crate::config::Config;
 use crate::cross_send::CrossSend;
+use crate::follow_geyser::FollowGeyser;
 use crate::make_accounts::MakeAccounts;
 use anchor_client::solana_client::nonblocking::rpc_client::RpcClient;
 use anchor_client::solana_sdk::commitment_config::CommitmentConfig;
@@ -31,14 +32,14 @@ async fn main() -> Result<(), Error> {
 
     let config_data = fs::read_to_string("./config.yaml")?;
     let config: Config = serde_yaml::from_str(config_data.as_str())?;
-    let connection: RpcClient = RpcClient::new_with_commitment(
+    let local_connection: RpcClient = RpcClient::new_with_commitment(
         "http://127.0.0.1:8899".to_string(),
         CommitmentConfig::confirmed(),
     );
 
     match args.run {
         Variant::MakeAccounts => {
-            let maker = MakeAccounts::new(connection);
+            let maker = MakeAccounts::new(local_connection);
 
             maker.make_sample().await
         }
@@ -47,7 +48,7 @@ async fn main() -> Result<(), Error> {
                 bail!("Empty balances config section!");
             }
 
-            let balances = Balances::new(connection);
+            let balances = Balances::new(local_connection);
 
             balances.display_balances(config.balances).await
         }
@@ -63,11 +64,15 @@ async fn main() -> Result<(), Error> {
                 bail!("From address count not equal To address count, check config!")
             }
 
-            let sender = CrossSend::new(connection);
+            let sender = CrossSend::new(local_connection);
 
             sender.send(from, to).await
         }
-        Variant::FollowGeyser => Ok(()),
+        Variant::FollowGeyser => {
+            let follower = FollowGeyser::new(config.geyser_endpoint, config.geyser_key);
+
+            follower.follow().await
+        }
         Variant::WalletTest => Ok(()),
     }
 }

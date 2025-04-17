@@ -5,7 +5,9 @@ pub struct Config {
     pub balances: Vec<String>,
     pub send_from: Vec<CfgKeyPair>,
     pub send_to: Vec<String>,
-    pub on_block_from: String,
+    pub geyser_endpoint: String,
+    pub geyser_key: String,
+    pub on_block_from: CfgKeyPair,
     pub on_block_to: String,
     pub wallet_program: String,
 }
